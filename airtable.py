@@ -21,9 +21,14 @@ value = last_row['fields'][COLUMN_1_NAME]
 browser = webdriver.Chrome(ChromeDriverManager().install())
 browser.get("https://www.google.com/imghp?hl=it")
 time.sleep(1)
-accetta = browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div[3]/span/div/div/div/div[3]/div[1]/button[2]")
-accetta.click()
-time.sleep(1)
+
+try:
+    accetta = browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div[3]/span/div/div/div/div[3]/div[1]/button[2]")
+    accetta.click()
+    time.sleep(1)
+except:
+    pass    
+
 barra_ricerca = browser.find_element(By.XPATH, "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/textarea")
 barra_ricerca.send_keys(value)
 barra_ricerca.send_keys(Keys.RETURN)
